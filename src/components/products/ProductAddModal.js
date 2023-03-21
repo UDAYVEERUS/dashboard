@@ -122,7 +122,7 @@ const ProductAddModal = ({
 
                             </div>
                         </form>
-                        <ProductImages images={state.product_image} />
+                        {/* <ProductImages images={state.product_image} /> */}
                         <div>
                             <form>
                                 <div className="relative z-0 w-full mb-6 group">
