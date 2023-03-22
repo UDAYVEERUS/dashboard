@@ -48,6 +48,8 @@ const INITIAL_STATE = {
     contacts_array: "",
     
 
+    users_array :""
+
 
 }
 
