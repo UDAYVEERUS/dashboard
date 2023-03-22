@@ -39,6 +39,7 @@ const INITIAL_STATE = {
     notification_flag: false,
     processing: false,
     message: "",
+    contacts_array : null
 }
 
 const reducers = (state=INITIAL_STATE,action)=>{
