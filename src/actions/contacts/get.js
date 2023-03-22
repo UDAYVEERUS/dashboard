@@ -1,35 +1,42 @@
-import { CHANGE_VARIABLE } from "../type";
-import { base_url } from "../variables";
-
-export const contactsGet = (data) => {
-    return(dispatch) =>{
-        contactsGetHelper({data,dispatch})
+import { base_url } from "../variables"
+import { CHANGE_VARIABLE } from "../type"
+console.log('skejnfdhdknnd')
+export const getContacts = () => {
+    console.log("herhehreh")
+    return (dispatch) => {
+        getContactsHelper({ dispatch })
     }
 }
 
-const contactsGetHelper = async({data, dispatch}) => {
+export const getContactsHelper = async ({ dispatch }) => {
     const headers = {
-        "Content-Type" : "application/json"
+        "Content-type": "application/json"
     }
     const config = {
         headers,
-        "method" : "GET"
+        method: "GET",
     }
-    const url = base_url+"/message/get"
-    try{
+    const url = base_url + "/message/get"
+    try {
         const response = await fetch(url, config)
         const response_json = await response.json()
-        console.log(response_json,"contacts")
-        if(response_json.status === 201){
+        if (response_json.status === 201) {
+            
             dispatch({
-                type : CHANGE_VARIABLE,
-                payload : {
-                    key  : "contacts_array",
-                    value : response_json.data
+                type: CHANGE_VARIABLE,
+                payload: {
+
+                    key: "contacts_array",
+                    value: response_json.data
+
                 }
             })
+        
+           
         }
-    }catch(err){
+
+    }
+    catch (err) {
         console.log(err)
     }
 }

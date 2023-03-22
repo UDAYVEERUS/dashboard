@@ -39,13 +39,22 @@ const INITIAL_STATE = {
     notification_flag: false,
     processing: false,
     message: "",
-    contacts_array : null
+
+    modal_contact_name : "",
+    modal_contact_email : "",
+    modal_contact_mobile : "",
+    modal_contact_subject : "",
+    modal_contact_message : "",
+    contacts_array: "",
+    
+
+
 }
 
-const reducers = (state=INITIAL_STATE,action)=>{
+const reducers = (state = INITIAL_STATE, action) => {
     switch (action.type) {
         case CHANGE_VARIABLE:
-      		return {...state, [ action.payload.key]: action.payload.value }
+            return { ...state, [action.payload.key]: action.payload.value }
         default:
             return state
 

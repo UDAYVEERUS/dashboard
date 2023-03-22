@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Routes, Route, BrowserRouter } from 'react-rou
 import Products from './components/products/Products';
 import Navbar from './components/navbar/Navbar';
 import Navigation from './components/navigation/Navigation';
+import Contacts from './components/contacts/Contacts';
 
 function App() {
   return (
@@ -13,8 +14,9 @@ function App() {
       <Routes>
         {/* <Route exact path="/" element={<Navbar />}></Route> */}
         
-        <Route exact path="/home" element={<Navigation />}></Route>
+        {/* <Route exact path="/home" element={<Navigation />}></Route> */}
         <Route exact path="/products" element={<Products />}></Route>
+        <Route exact path="/contacts" element={<Contacts />}></Route>
       </Routes> 
     </BrowserRouter>
     </>
