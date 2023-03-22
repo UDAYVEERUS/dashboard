@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import { categoryAdd, hideModal } from "../../actions";
 import { uploadFiles } from "../../actions/upload/uploadFiles";
@@ -47,13 +47,13 @@ const CategoryAddModal = ({
             <div>
                 <form>
                     <input type="text" value={state.category_title} onChange={(e) => updateState(e)} name="category_title" placeholder="title" required />
-                    <label for="title">title</label>
+                    <label htmlFor="title">title</label>
                     <input type="text" value={state.category_description} onChange={(e) => updateState(e)} name="category_description" placeholder="description" required />
-                    <label for="title">description</label>
+                    <label htmlFor="title">description</label>
                     <input type="checkbox" checked={state.category_onHome} onChange={(e) => { setState({ ...state, category_onHome: state.category_onHome == true ? false : true }) }} name="category_onHome" placeholder="" required />
-                    <label for="onHome">onHome</label>
+                    <label htmlFor="onHome">onHome</label>
                     <input type="checkbox" checked={state.category_is_active} onChange={(e) => { setState({ ...state, category_is_active: state.category_is_active == true ? false : true }) }} name="category_is_Active" placeholder="" required />
-                    <label for="onHome">is_Active</label>
+                    <label htmlFor="onHome">is_Active</label>
                     <div>
                         <div>
                             <button type="button" value={state.category_title} onClick={() => { categoryAdd(state) }} name="category_title" placeholder="title" required>Submit</button>

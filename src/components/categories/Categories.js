@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import { categoryiesGet } from "../../actions";
 import CategoryAddModal from "./CategoryAddModal";
@@ -20,7 +20,7 @@ const Categories = ({
             <div>
                 {categories_array && categories_array.map((value, index) => {
                     return (
-                        <div key={index}>
+                        <div key={index} className='grid grid-cols-3'>
                             <CategoryItems value={value} />
                         </div>
                     )

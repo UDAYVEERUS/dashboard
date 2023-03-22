@@ -8,44 +8,13 @@ export const categoryiesGet = (data) => {
 }
 
 export const categoryiesGetHelper = async ({ dispatch, data }) => {
-    // dispatch({
 
-    //     type: CHANGE_VARIABLE,
-    //     payload: {
-
-    //         key: "notification_flag",
-    //         value: true
-
-    //     }
-
-    // })
-    // dispatch({
-
-    //     type: CHANGE_VARIABLE,
-    //     payload: {
-
-    //         key: "notification",
-    //         value: "Adding product..."
-
-    //     }
-
-    // })
     const headers = {
         "Content-Type": "application/json"
     }
-    // const body = JSON.stringify({
-    //     title: data.product_title,
-    //     description: data.product_description,
-    //     price: data.product_price,
-    //     stock: data.product_stock,
-    //     sku: data.product_sku,
-    //     is_active: data.product_is_active,
-    //     image: data.product_images.toString(),
-    //     productId: data.product_id,
-    // })
+   
     const config = {
         headers,
-        // body,
         method: "GET"
     }
 

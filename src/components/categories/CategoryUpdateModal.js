@@ -1,9 +1,9 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import { categoryUpdate, hideModal } from "../../actions";
 import { uploadFiles } from "../../actions/upload/uploadFiles";
 
-const categoryUpdateModal = ({
+const CategoryUpdateModal = ({
     modal_Category_title,
     modal_Category_description,
     modal_Category_onHome,
@@ -48,6 +48,10 @@ const categoryUpdateModal = ({
     const uploadFileFunction = (event) => {
         uploadFiles(event.targte.files)
     }
+    const categoryUpdateFunc = (event) => {
+        event.preventDefault()
+        categoryUpdate(state)
+    }
     useEffect(() => {
         if (files !== null) {
             console.log("here", files)
@@ -64,47 +68,59 @@ const categoryUpdateModal = ({
         }
     }, [files])
     return (
-        <div>
+        <div className="flex justify-center mx-auto">
             {modal_category_flag &&
-                <div>
-                    <div>
-                        <form>
-                            <div>
-                                <input type="text" onChange={(e) => updateState(e)} value={state.category_title} name="title" placeholder="title" required />
-                                <lable>Title</lable>
-                                <input type="text" onChange={(e) => updateState(e)} value={state.category_description} name="description" placeholder="description" required />
-                                <lable>description</lable>
-                                <input type="checkbox" onChange={(e) => { setState({ ...state, category_onHome: state.category_onHome === true ? false : true }) }} checked={state.category_onHome} name="category_onHome" placeholder="" required />
-                                <lable>onHome</lable>
-                                <input type="checkbox" onChange={(e) => { setState({ ...state, category_is_active: state.category_is_active === true ? false : true }) }} checked={state.category_is_active} name="category_is_active" placeholder="" required />
-                                <lable>is_Active</lable>
-                                <input type="checkbox" onChange={(e) => { setState({ ...state, category_mastHead: state.category_mastHead === true ? false : true }) }} checked={state.category_mastHead} name="category_masthead" placeholder="" required />
-                                <lable>is_Active</lable>
-                            </div>
-                            <div>
-                                <div>
-                                    <button type="submit" onClick={() => { categoryUpdate(state) }}>submit</button>
-                                    <button>Delete</button>
+                <div id="defaultModal" tabIndex="-1" aria-hidden="true" className="fixed top-0 left-0 right-0 z-50  p-4 overflow-x-hidden overflow-y-auto md:inset-0">
+                    <div className="relative ">
+                        <div className="relative bg-white rounded-lg shadow dark:bg-gray-200 w-96 h-[400px]">
+                            <form className="p-5">
+                                <div className="relative z-0 w-full mb-6 group">
+                                    <div>
+                                        <label>Title</label>
+                                        <input className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-black dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer " type="text" onChange={(e) => updateState(e)} value={state.category_title} name="title" placeholder="title" />
+                                    </div>
+                                    <div>
+                                        <label>description</label>
+                                        <input type="text" className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-black dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer " onChange={(e) => updateState(e)} value={state.category_description} name="description" placeholder="description" />
+                                    </div>
+                                    <div>
+                                        <label>onHome</label>
+                                        <input type="checkbox" className="mt-4" onChange={(e) => { setState({ ...state, category_onHome: state.category_onHome === true ? false : true }) }} checked={state.category_onHome} name="category_onHome" placeholder="" />
+                                    </div>
+                                    <div>
+                                        <label>is_Active</label>
+                                        <input type="checkbox" className="mt-4" onChange={(e) => { setState({ ...state, category_is_active: state.category_is_active === true ? false : true }) }} checked={state.category_is_active} name="category_is_active" placeholder="" />
+                                    </div>
+                                    <div>
+                                        <label>mastHead</label>
+                                        <input type="checkbox" className="mt-4" onChange={(e) => { setState({ ...state, category_mastHead: state.category_mastHead === true ? false : true }) }} checked={state.category_mastHead} name="category_masthead" placeholder="" />
+                                    </div>
                                 </div>
-                                <div>
-                                    <button type="button" onClick={() => { hideModal("categoryupdate") }}>close</button>
+                                <div className="flex justify-between">
+                                    <div className=" flex gap-4">
+                                        <button className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" type="submit" onClick={(event) => { categoryUpdateFunc(event) }}>submit</button>
+                                        <button className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Delete</button>
+                                    </div>
+                                    <div>
+                                        <button className='text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800' type="button" onClick={() => { hideModal("categoryupdate") }}>close</button>
+                                    </div>
                                 </div>
-                            </div>
-                        </form>
-                        <ProductImages images={state.category_images} />
-                        <form>
-                            <div>
-                                <input type="file" onChange={(files)=>{uploadFileFunction(files)}} multiple={true} />
-                                <lable>Image</lable>
-                            </div>
-                        </form>
+                            </form>
+                            {/* <ProductImages images={state.category_images} /> */}
+                            <form className="px-4">
+                                <div>
+                                    <input type="file" onChange={(files) => { uploadFileFunction(files) }} multiple={true} />
+                                    {/* <label>Image</label> */}
+                                </div>
+                            </form>
+                        </div>
                     </div>
                 </div>
             }
         </div>
     )
 
-    
+
 }
 
 const mapStateToProps = (state) => {
@@ -137,4 +153,4 @@ const mapActionToProps = {
     uploadFiles
 }
 
-export default connect(mapActionToProps, mapStateToProps)(categoryUpdateModal)
+export default connect(mapStateToProps, mapActionToProps)(CategoryUpdateModal)

@@ -18,15 +18,20 @@ const CategoryItem = ({
         changeVaribale("modal_category_image", value.image)
         changeVaribale("modal_category_id", value._id)
         changeVaribale("modal_Category_mastHead", value.mastHead)
-        changeVaribale("modal_categoy_flag", true)
+        changeVaribale("modal_category_flag", true)
         console.log(value, "here")
     }
+    
+
     return (
         <>
-            <div>
-                <div onClick={() => { displayCategoryModal() }}>
-                    <div>{value.id}</div>
-                    <div>{value.title}</div>
+            <div onClick={() => { displayCategoryModal() }} className="w-22 h-22  p-10 m-1 bg-white rounded border border-light-grey shadow cursor-pointer bg-slate-10">
+
+                <div>{value._id}</div>
+                <div>{value.title}</div>
+                <div>{value.description}</div>
+                <div className="h-20 w-20 mt-6">
+                    {value.image ? <img src={value.image.split(",")[0]} /> : ""}
                 </div>
             </div>
             {
@@ -37,9 +42,10 @@ const CategoryItem = ({
 }
 
 const mapStateToProps = (state) => {
-    const { value, modal_category_flag } = state.variabels
+    const {modal_category_flag}
+     = state.variables
+
     return {
-        value,
         modal_category_flag
     }
 }

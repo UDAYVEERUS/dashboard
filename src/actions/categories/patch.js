@@ -38,15 +38,21 @@ export const categoryUpdate = (data) => {
         description: data.category_description,
         is_active: data.category_is_active,
         image: !data.category_images?"":data.category_images.toString(),
-        onHome: data.category_onHome
+        onHome: data.category_onHome,
+        mastHead : data.category_mastHead,
+        categoryId : data.category_id
+        
+        
     })
+    console.log(body,"herere")
+    // console.log(data.category_id,"cycgvujhkmytyfc vhgbjnm")
     const config = {
         headers,
         body,
         method: "PATCH"
     }
-
-    const url = base_url + "/category/update"
+    const url = base_url + `/category/${data.category_id}`
+    // console.log(url,"herere")
     try {
         const response = await fetch(url, config)
         const response_json = await response.json()

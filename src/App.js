@@ -5,6 +5,7 @@ import Products from './components/products/Products';
 import Navbar from './components/navbar/Navbar';
 import Navigation from './components/navigation/Navigation';
 import Contacts from './components/contacts/Contacts';
+import Categories from './components/categories/Categories';
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         {/* <Route exact path="/home" element={<Navigation />}></Route> */}
         <Route exact path="/products" element={<Products />}></Route>
         <Route exact path="/contacts" element={<Contacts />}></Route>
+        <Route exact path="/categories" element={<Categories />}></Route>
       </Routes> 
     </BrowserRouter>
     </>
