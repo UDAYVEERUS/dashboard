@@ -10,7 +10,6 @@ const ProductImage = (props) => {
                     layout={"fill"}
                     objectFit={"contain"}
                     alt={"_blank"}
-                    unoptimized={true}
                 />
             </div>
         )

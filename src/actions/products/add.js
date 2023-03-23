@@ -40,9 +40,10 @@ const productAddHelper = async ({ dispatch, data }) => {
         stock: data.product_stock,
         sku: data.product_sku,
         is_active: data.product_is_active,
-        image: data.product_images.toString(),
-        productId: data.product_id,
+        image: !data.product_images?"":data.product_images.toString(),
+        onHome : data.product_onHome
     })
+    console.log(body,"herere")
     const config = {
         headers,
         body,
@@ -53,7 +54,7 @@ const productAddHelper = async ({ dispatch, data }) => {
     try {
         const response = await fetch(url, config)
         const response_json = await response.json()
-        // console.log(response_json, "here")
+        console.log(response_json, "here")
         if (response_json.status === 201) {
             dispatch({
                 type: CHANGE_VARIABLE,

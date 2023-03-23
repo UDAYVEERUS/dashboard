@@ -11,20 +11,15 @@ export const uploadFiles = (file) => {
  const uploadFilesHelper  = async({file, dispatch}) => {
     try{
         var formData = new FormData()
-        // console.log(file,"here")
 
         for(var i=0; i<file.length;i++){
-            // console.log(file[i])
             formData.append("photo", file[i])
         }
-        // console.log(formData,"here1")
         const url = base_url+"/upload/image"
         const config = {
             "Content-Type" : "application/json"
         }
-        // console.log(url,"sdfghjk",formData,config)
         const response = await axios.post(url,formData, config)
-        // console.log(response)
 
         dispatch({
             type : CHANGE_VARIABLE,

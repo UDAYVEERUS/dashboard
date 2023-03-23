@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import { productAdd, hideModal } from "../../actions";
 import { uploadFiles } from "../../actions/upload/uploadFiles";
+import ProductImages from "./ProductImages";
 
 const ProductAddModal = ({
     files,
@@ -22,7 +23,7 @@ const ProductAddModal = ({
         product_stock: 0,
         product_sku: "",
         product_id: "",
-        product_image: [],
+        product_images: [],
         product_is_active: true,
         product_onHome: false
     })
@@ -37,6 +38,11 @@ const ProductAddModal = ({
     //     console.log("this is am")
     // }, [add_product_flag])
 
+    const productAddFunc = (event) => {
+        event.preventDefault()
+        productAdd(state)
+    }
+
     const uploadFileFunction = (event) => {
         uploadFiles(event.target.files)
     }
@@ -47,16 +53,15 @@ const ProductAddModal = ({
     }
     useEffect(() => {
         if (files !== null) {
-            console.log("here", files)
-            console.log("here2", files.data)
+            console.log(files, "image")
+            console.log(files.data, "image2")
             var images = []
             {
                 files.data ? files.data.map((value, index) => {
                     images.push(value.secure_url)
-                }) :
-                    images.push(files.secure_url)
+                }) : images.push(files.secure_url)
             }
-            setState({ ...state, product_image: images })
+            setState({ ...state, product_images: images })
         }
     }, [files])
     return (
@@ -68,66 +73,52 @@ const ProductAddModal = ({
                         <form className="p-5">
                             <div>
                                 <label htmlFor="title">TITLE</label>
-
                                 <input type="text" className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-black dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer " value={state.product_title} onChange={(e) => updateState(e)} name="product_title" placeholder="title" />
                             </div>
                             <div>
                                 <label htmlFor="title">DESCRIPTION</label>
-
                                 <input type="text" className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-black dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer " value={state.product_description} onChange={(e) => updateState(e)} name="product_description" placeholder="description" />
                             </div>
                             <div>
                                 <label htmlFor="title">PRICE</label>
-
                                 <input type="text" className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-black dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer " value={state.product_price} onChange={(e) => updateState(e)} name="product_price" placeholder="price" />
                             </div>
                             <div>
                                 <label htmlFor="title">STOCK</label>
-
                                 <input type="text" className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-black dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer " value={state.product_stock} onChange={(e) => updateState(e)} name="product_stock" placeholder="stock" />
                             </div>
                             <div>
                                 <label htmlFor="title">SKU</label>
-
                                 <input type="text" className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-black dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer " value={state.product_sku} onChange={(e) => updateState(e)} name="product_sku" placeholder="sku" />
                             </div>
                             <div className="mt-2 flex gap-4">
                                 <label htmlFor="onHome">ONHOME</label>
-
                                 <input type="checkbox" checked={state.product_onHome} onChange={(e) => { setState({ ...state, product_onHome: state.product_onHome === true ? false : true }) }} name="product_onHome" placeholder="" />
                             </div>
                             <div className="mt-2 flex gap-4">
                                 <label htmlFor="onHome">IS ACTIVE</label>
-
                                 <input type="checkbox" checked={state.product_is_active} onChange={(e) => { setState({ ...state, product_is_active: state.product_is_active === true ? false : true }) }} name="product_is_active" placeholder="" />
                             </div>
                             <div className="mt-5">
                                 <div>
-                                    {/* <label>category</label>
-                                    <label>undeline select</label> */}
                                     <select onChange={(e) => updateState(e)} id="undeline select">
                                         <option>choose a category</option>
                                         {state.category_array.map((category) => { return <option value={category.title}>{category.title}</option> })}
                                     </select>
-
                                 </div>
-
                                 <div className='flex justify-between mt-4'>
-                                    <button type="submit" className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" onClick={() => { productAdd(state) }}>submit</button>
+                                    <button type="submit" className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" onClick={(event) => { productAddFunc(event) }}>submit</button>
                                     <button className="ml-2 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">delete</button>
-
                                     <button className='text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800' onClick={() => hideModal("productadd")}>close</button>
                                 </div>
-
-
                             </div>
                         </form>
-                        {/* <ProductImages images={state.product_image} /> */}
+                        <ProductImages images={state.product_images} />
                         <div>
                             <form>
                                 <div className="relative z-0 w-full mb-6 group">
-                                    <input type="file" name="product_images" className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-black dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer " onChange={(files) => uploadFileFunction(files)} placeholder="" multiple={true} />
-                                    <label htmlFor="images">Image</label>
+                                    <input type="file" className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-black dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer " onChange={(files) => uploadFileFunction(files)} multiple={true} />
+                                    <label>Image</label>
                                 </div>
                             </form>
                         </div>
