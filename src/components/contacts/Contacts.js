@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import { getContacts } from "../../actions";
+import Notification from "../notification/Notification";
 import ContactList from "./ContactList";
 
 const Contacts = ({
@@ -17,6 +18,7 @@ const Contacts = ({
             { contacts_array&&
             <ContactList contacts_array={contacts_array} />
             }
+            <Notification />
         </div>
     )
 }

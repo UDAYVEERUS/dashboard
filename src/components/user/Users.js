@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import { usersGet } from "../../actions";
+import Notification from "../notification/Notification";
 import UsersList from "./UsersList";
 
 const Users = ({
@@ -17,6 +18,7 @@ const Users = ({
             {users_array &&
              <UsersList users_array = {users_array} />
             }
+            <Notification />
         </div>
     )
 }

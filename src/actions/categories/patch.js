@@ -40,12 +40,8 @@ export const categoryUpdate = (data) => {
         image: !data.category_images?"":data.category_images.toString(),
         onHome: data.category_onHome,
         mastHead : data.category_mastHead,
-        categoryId : data.category_id
-        
-        
     })
     console.log(body,"herere")
-    // console.log(data.category_id,"cycgvujhkmytyfc vhgbjnm")
     const config = {
         headers,
         body,

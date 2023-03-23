@@ -22,7 +22,7 @@ const productItems = ({productData, changeVaribale}) => {
     }
     return(
         
-        <div className="w-72 h-40 p-2.5 m-1  rounded border border-light-grey shadow cursor-pointer bg-slate-100" onClick={()=>{display_product_modal()}}>
+        <div className="w-72 h-40 p-2.5 m-1  rounded border border-light-grey shadow cursor-pointer bg-slate-100 border-dashed border-black" onClick={()=>{display_product_modal()}}>
             <div>Title-{title}</div>
             <div>
                 <div>price - {price}</div>

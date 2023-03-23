@@ -1,8 +1,6 @@
 import { base_url } from "../variables"
 import { CHANGE_VARIABLE } from "../type"
-console.log('skejnfdhdknnd')
 export const getContacts = () => {
-    console.log("herhehreh")
     return (dispatch) => {
         getContactsHelper({ dispatch })
     }

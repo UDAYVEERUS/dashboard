@@ -7,6 +7,7 @@ import Navigation from './components/navigation/Navigation';
 import Contacts from './components/contacts/Contacts';
 import Categories from './components/categories/Categories';
 import Users from './components/user/Users';
+import Home from './components/home/Home';
 
 function App() {
   return (
@@ -14,7 +15,7 @@ function App() {
     <BrowserRouter>
     <Navigation/>
       <Routes>
-        {/* <Route exact path="/" element={<Navbar />}></Route> */}
+        <Route exact path="/" element={<Home />}></Route>
         
         {/* <Route exact path="/home" element={<Navigation />}></Route> */}
         <Route exact path="/products" element={<Products />}></Route>

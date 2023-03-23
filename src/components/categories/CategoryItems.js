@@ -17,15 +17,15 @@ const CategoryItem = ({
         changeVaribale("modal_category_is_active", value.is_active)
         changeVaribale("modal_category_image", value.image)
         changeVaribale("modal_category_id", value._id)
-        changeVaribale("modal_Category_mastHead", value.mastHead)
+        changeVaribale("modal_category_mastHead", value.mastHead)
         changeVaribale("modal_category_flag", true)
-        console.log(value, "here")
+        // console.log(value, "here")
     }
     
 
     return (
-        <>
-            <div onClick={() => { displayCategoryModal() }} className="w-22 h-22  p-10 m-1 bg-white rounded border border-light-grey shadow cursor-pointer bg-slate-10">
+        <div className="">
+            <div onClick={() => { displayCategoryModal() }} className="p-5 rounded border bg-slate-100 border-dashed border-black border-light-grey shadow cursor-pointer bg-slate-10">
 
                 <div>{value._id}</div>
                 <div>{value.title}</div>
@@ -37,7 +37,7 @@ const CategoryItem = ({
             {
                 modal_category_flag && <CategoryUpdateModal />
             }
-        </>
+        </div>
     )
 }
 

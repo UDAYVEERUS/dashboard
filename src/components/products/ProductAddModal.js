@@ -63,7 +63,7 @@ const ProductAddModal = ({
     return (
         <div>
             <div id="defaultModal" tabIndex="-1" aria-hidden="true" className="fixed top-0 left-0 right-0 z-50  w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-modal md:h-full">
-                <div className="relative w-full h-full max-w-2xl md:h-auto">
+                <div className="relative w-[500px] md:h-auto">
                     <div className="relative bg-white rounded-lg shadow dark:bg-gray-200">
                         <form className="p-5">
                             <div>
@@ -90,26 +90,28 @@ const ProductAddModal = ({
                                 <label htmlFor="onHome">ONHOME</label>
                                 <input type="checkbox" checked={state.product_onHome} onChange={(e) => { setState({ ...state, product_onHome: state.product_onHome === true ? false : true }) }} name="product_onHome" placeholder="" />
                             </div>
-                            <div className="mt-2 flex gap-4">
+                            <div className="mt-2 flex flex-row gap-4">
                                 <label htmlFor="onHome">IS ACTIVE</label>
                                 <input type="checkbox" checked={state.product_is_active} onChange={(e) => { setState({ ...state, product_is_active: state.product_is_active === true ? false : true }) }} name="product_is_active" placeholder="" />
                             </div>
-                            <div className="mt-5">
-                                <div>
+                            <div className="mt-5 flex gap-4">
+                                {/* <div>
                                     <select onChange={(e) => updateState(e)} id="undeline select">
                                         <option>choose a category</option>
                                         {state.category_array.map((category, index) => { return <option key={index} value={category.title}>{category.title}</option> })}
                                     </select>
-                                </div>
-                                <div className='flex justify-between mt-4'>
+                                </div> */}
+                                <div className='flex justify-between mt-4 gap-4'>
                                     <button type="submit" className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" onClick={(event) => { productAddFunc(event) }}>submit</button>
                                     <button className="ml-2 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">delete</button>
                                     <button className='text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800' onClick={() => hideModal("productadd")}>close</button>
                                 </div>
                             </div>
                         </form>
-                        <ProductImages images={state.product_images} />
-                        <div>
+                        <div className="h-10 w-10 flex justify-between">
+                            <ProductImages images={state.product_images} />
+                        </div>
+                        <div className="px-4">
                             <form>
                                 <div className="relative z-0 w-full mb-6 group">
                                     <input type="file" className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-black dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" onChange={(files) => uploadFileFunction(files)} multiple={true} />

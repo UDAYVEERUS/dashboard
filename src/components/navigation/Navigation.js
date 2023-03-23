@@ -24,46 +24,44 @@ const Navigation = ({
 
   const togglemodal = (data)=>{
     if(data==="product"){
-      // console.log(data,"sdfghjk")
       changeVaribale("add_product_flag",true)
     }
     if(data==="category"){
-      console.log("Strkdjgn",add_category_flag)
 
       changeVaribale("add_category_flag",true)
       }
   }
   const [expand, setExpand] = useState(false)
   return (
-    <div className=' ml-10 w-fit ' onMouseEnter={() => { setExpand(true) }} onMouseLeave={() => { setExpand(false) }}>
+    <div className=' ml-10 w-fit ' >
 
-      <div className='flex flex-row'>
-        <div className="currentmenu mt-3.5" >
+      <div className='flex flex-row' >
+        <div className="currentmenu mt-3.5" onMouseEnter={() => { setExpand(true) }} onMouseLeave={() => { setExpand(false) }} >
           Dashboard
         </div>
         {
           expand &&
-          <div className='bg-white w-fit fixed mt-5' onMouseEnter={() => { setExpand(true) }} onMouseLeave={() => { setExpand(false) }}>
+          <div className='bg-white w-32 p-4 fixed mt-5' onMouseEnter={() => { setExpand(true) }} onMouseLeave={() => { setExpand(false) }}>
             <Link to={'/products'}>
-              <div className='navigationmenu '>
+              <div className='text-base'>
                 Products
               </div>
             </Link>
             <Link to={'/categories'}>
-              <div className='navigationmenu '>
+              <div className='mt-3 text-base'>
                 Category
               </div>
             </Link>
-            <div className='navigationmenu '>
+            {/* <div className='mt-3'>
               Product Type
-            </div>
+            </div> */}
             <Link to={'/orders'}>
-            <div className='navigationmenu '>
+            <div className='mt-3 text-base'>
               Orders
             </div>
             </Link>
             <Link to={'/contacts'}>
-            <div className='navigationmenu '>
+            <div className='mt-3 text-base'>
               Messages
             </div>
             </Link>

@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import { useParams } from "react-router-dom";
 import { categoryiesGet, productsGet } from "../../actions";
+import Notification from "../notification/Notification";
 import ProductAddModal from "./ProductAddModal";
 import ProductList from "./ProductList";
 
@@ -26,6 +27,7 @@ const Products = ({
             {add_product_flag &&
                 <ProductAddModal categories_array={categories_array} />
             }
+            <Notification />
         </div>
     )
 }
