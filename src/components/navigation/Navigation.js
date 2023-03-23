@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 
 import { connect } from 'react-redux'
-import { Link, useParams } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { changeVaribale } from '../../actions/variables'
 
 
@@ -20,7 +20,6 @@ const Navigation = ({
 
 }) => {
 
-  const {location}=useParams()
 
   const togglemodal = (data)=>{
     if(data==="product"){
@@ -30,13 +29,16 @@ const Navigation = ({
 
       changeVaribale("add_category_flag",true)
       }
+      if(data === "contact"){
+        changeVaribale("add_contact_flag", true)
+      }
   }
   const [expand, setExpand] = useState(false)
   return (
     <div className=' ml-10 w-fit ' >
 
       <div className='flex flex-row' >
-        <div className="currentmenu mt-3.5" onMouseEnter={() => { setExpand(true) }} onMouseLeave={() => { setExpand(false) }} >
+        <div className="mt-3 text-base" onMouseEnter={() => { setExpand(true) }} onMouseLeave={() => { setExpand(false) }} >
           Dashboard
         </div>
         {
@@ -74,6 +76,9 @@ const Navigation = ({
         <div className='flex flex-row m-3' onClick={()=>{togglemodal("category")}}>
           <div className='text-black text-lg cursor-pointer mr-4'>Add New Category</div>
         </div>
+        <div className='flex flex-row m-3' onClick={()=>{togglemodal("contact")}}>
+          <div className='text-black text-lg cursor-pointer mr-4'>Add New Message</div>
+        </div>
       </div>
 
 
@@ -91,7 +96,8 @@ const mapStateToProps = (state) => {
     products_array,
     test,
     add_product_flag,
-    add_category_flag
+    add_category_flag,
+    add_contact_flag,
     
 
   } = state.variables
@@ -102,8 +108,8 @@ const mapStateToProps = (state) => {
     products_array,
     test,
     add_product_flag,
-    add_category_flag
-    
+    add_category_flag,
+    add_contact_flag
 
   }
 

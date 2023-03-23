@@ -13,7 +13,7 @@ const ContactItems = (props) =>{
         changeVaribale("modal_contact_message")
     }
     return(
-        <div onClick={()=>{display_contact_modal()}} className="w-fit h-44  p-2.5 m-1 rounded border border-light-grey shadow cursor-pointer bg-slate-100">
+        <div onClick={()=>{display_contact_modal()}} className="w-fit h-fit p-2.5 m-1 rounded border border-light-grey shadow cursor-pointer bg-slate-100">
                 <div>name : {name}</div>
                 <div>email : {email}</div>
                 <div>mobile : {mobile}</div>

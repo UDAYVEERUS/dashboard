@@ -8,7 +8,7 @@ const Notification = ({notification, notification_flag})=>{
         if(!notification_flag && display){
             setTimeout(()=>{
                 updateDisplay(false)
-            },3000)
+            },5000)
         }
         if(notification_flag){
             updateDisplay(true)
@@ -16,7 +16,7 @@ const Notification = ({notification, notification_flag})=>{
     },[notification_flag])
     if(display)
     return(
-        <div className="text-lg bg-primary text-white fixed top-5 right-5 px-5 py-2.5 rounded  z-10 border border-slate-50">
+        <div className="text-lg bg-black text-white fixed top-5 right-5 px-5 py-2.5 rounded  z-10 border border-slate-50">
             {notification}
         </div>
     )

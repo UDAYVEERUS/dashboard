@@ -73,5 +73,20 @@ export const hideModalHelper = async({dispatch, data}) =>{
     
     
     }
+    if(data==="contactadd"){
+        dispatch({
+
+            type: CHANGE_VARIABLE,
+            payload: {
+    
+                key: "add_contact_flag",
+                value: false
+    
+            }
+    
+        })
+    
+    
+    }
     
 }
