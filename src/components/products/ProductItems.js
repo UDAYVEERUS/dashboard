@@ -9,8 +9,6 @@ const productItems = ({productData, changeVaribale}) => {
 
     
     const display_product_modal = () => {
-        console.log(_id,"id")
-        // console.log(title,_id, description, price, stock, sku,image, is_active, onHome,"zxcvbnm")
         changeVaribale("modal_product_title",title)
         changeVaribale("modal_product_id",_id)
         changeVaribale("modal_product_description",description)

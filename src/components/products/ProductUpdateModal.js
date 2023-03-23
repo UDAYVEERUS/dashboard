@@ -59,7 +59,6 @@ const ProductUpdateModal = ({
         product_is_active: true,
         product_images: []
     })
-    // console.log(state,"fdgahskjbcvx")
     
     const updateState = (event) => {
         const variable = event.target.name

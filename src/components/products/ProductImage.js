@@ -8,7 +8,6 @@ const ProductImage = (props) => {
                 <img
                     src={image}
                     layout={"fill"}
-                    objectFit={"contain"}
                     alt={"_blank"}
                 />
             </div>

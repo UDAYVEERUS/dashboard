@@ -27,16 +27,12 @@ const ProductAddModal = ({
         product_is_active: true,
         product_onHome: false
     })
-    // console.log(state,"asdfghjk")
     useEffect(() => {
         setState({
             ...state,
             category_array: categories_array
         })
     }, [categories_array])
-    // useEffect(() => {
-    //     console.log("this is am")
-    // }, [add_product_flag])
 
     const productAddFunc = (event) => {
         event.preventDefault()
@@ -66,7 +62,6 @@ const ProductAddModal = ({
     }, [files])
     return (
         <div>
-            {/* {console.log(categories_array)} */}
             <div id="defaultModal" tabIndex="-1" aria-hidden="true" className="fixed top-0 left-0 right-0 z-50  w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-modal md:h-full">
                 <div className="relative w-full h-full max-w-2xl md:h-auto">
                     <div className="relative bg-white rounded-lg shadow dark:bg-gray-200">
@@ -103,7 +98,7 @@ const ProductAddModal = ({
                                 <div>
                                     <select onChange={(e) => updateState(e)} id="undeline select">
                                         <option>choose a category</option>
-                                        {state.category_array.map((category) => { return <option value={category.title}>{category.title}</option> })}
+                                        {state.category_array.map((category, index) => { return <option key={index} value={category.title}>{category.title}</option> })}
                                     </select>
                                 </div>
                                 <div className='flex justify-between mt-4'>
@@ -117,7 +112,7 @@ const ProductAddModal = ({
                         <div>
                             <form>
                                 <div className="relative z-0 w-full mb-6 group">
-                                    <input type="file" className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-black dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer " onChange={(files) => uploadFileFunction(files)} multiple={true} />
+                                    <input type="file" className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-black dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" onChange={(files) => uploadFileFunction(files)} multiple={true} />
                                     <label>Image</label>
                                 </div>
                             </form>

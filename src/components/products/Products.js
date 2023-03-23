@@ -19,14 +19,7 @@ const Products = ({
         categoryiesGet()
         productsGet()
     }, [])
-    // useEffect(() => {
-    //     console.log(categories_array, "here")
-    // }, [categories_array])
-
-
-    // useEffect(() => {
-    //    console.log(add_product_flag,"zxcvbnmkloiuygh")
-    // }, [])
+    
     return (
         <div>
             <div><ProductList productsData={products_array} /></div>
