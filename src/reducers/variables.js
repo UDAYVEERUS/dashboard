@@ -46,6 +46,8 @@ const INITIAL_STATE = {
     modal_contact_subject : "",
     modal_contact_message : "",
     contacts_array: "",
+    
+    add_contact_flag : false,
 
     users_array :"",
 
